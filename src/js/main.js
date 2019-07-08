@@ -25,6 +25,7 @@ const months = [
 
 newSubmition();
 buildList();
+/*  */
 
 window.addEventListener('scroll', debounce(checkSlide));
 
@@ -93,6 +94,10 @@ function buildList() {
       });
     }
   });
+  const listComponents = document.querySelectorAll('.list-component');
+  console.log(listComponents);
+  TweenMax.set(listComponents, { opacity: 0 });
+  TweenMax.staggerTo(listComponents, 0.2, { opacity: 1, y: 0 }, 0.1);
 }
 
 function buildSubmitionWindow() {
@@ -187,8 +192,8 @@ function newSubmition() {
           };
           days.unshift(newDay);
           localStorage.setItem('days', JSON.stringify(days));
-          close();
           buildList();
+          close();
         }
       });
   } else return false;
